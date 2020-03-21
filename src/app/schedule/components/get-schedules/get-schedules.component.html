@@ -12,11 +12,11 @@
   </ng-container>
   <ng-container matColumnDef="startDate">
     <th mat-header-cell *matHeaderCellDef>Fecha Inicial</th>
-    <td mat-cell *matCellDef="let schedule">{{schedule.startDate}}</td>
+    <td mat-cell *matCellDef="let schedule">{{schedule.startDate | date}}</td>
   </ng-container>
   <ng-container matColumnDef="endDate">
     <th mat-header-cell *matHeaderCellDef>Fecha Final</th>
-    <td mat-cell *matCellDef="let schedule">{{schedule.endDate}}</td>
+    <td mat-cell *matCellDef="let schedule">{{schedule.endDate | date}}</td>
   </ng-container>
   <ng-container matColumnDef="strartSchedule">
     <th mat-header-cell *matHeaderCellDef>Inicio Turno</th>

@@ -34,7 +34,11 @@ export class ScheduleComponent implements OnInit {
     event.preventDefault();
     const schedule = this.createSchedule.value;
     this.scheduleService.addSchedule(schedule)
-      .subscribe(res => { console.log(res); });
+      .subscribe(res => {
+        const convert = JSON.stringify(res);
+        const addedschedule = JSON.parse(convert);
+        alert(addedschedule.body);
+      });
   }
 
 }

@@ -1,0 +1,88 @@
+<form [formGroup]="createSchedule" (ngSubmit)="addSchedule($event)">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Creacion De Horarios</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <mat-label>Documento</mat-label>
+          <input formControlName="document" matInput type="text" maxlength=15>
+          <mat-error
+            *ngIf="createSchedule.get('document').hasError('required')">El
+            documento es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+        <mat-form-field class="Input">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="name" matInput type="text">
+          <mat-error *ngIf="createSchedule.get('name').hasError('required')">El
+            Nombre es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Fecha Inicial</mat-label>
+          <input formControlName="startDate" matInput
+            [matDatepicker]="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+          <mat-error
+            *ngIf="createSchedule.get('startDate').hasError('required')"> La
+            Fecha Inicial es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+        <mat-form-field  class="Input">
+          <mat-label>Fecha Final</mat-label>
+          <input formControlName="endDate" matInput [matDatepicker]="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+          <mat-error
+            *ngIf="createSchedule.get('endDate').hasError('required')"> La
+            Fecha Final es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Inicio Turno</mat-label>
+          <input formControlName="starSchedule" matInput type="time">
+          <mat-error
+            *ngIf="createSchedule.get('startDate').hasError('required')">El
+            Inicio de Turno es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+        <mat-form-field class="Input">
+          <mat-label>Final Turno</mat-label>
+          <input formControlName="endSchedule" matInput type="time">
+          <mat-error *ngIf="createSchedule.get('endDate').hasError('required')">El
+            Final del Turno es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Horario Extra (Inicio)</mat-label>
+          <input formControlName="startExtraSchedule" matInput type="time">
+          <mat-error
+            *ngIf="createSchedule.get('startExtraSchedule').hasError('required')">El
+            Inicio de Horario extra es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="Input">
+          <mat-label>Horario Extra (Final)</mat-label>
+          <input formControlName="endExtraSchedule" matInput type="time">
+          <mat-error
+            *ngIf="createSchedule.get('endExtraSchedule').hasError('required')">El
+            Horario Final Extra es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Motivo Hora Extra</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error
+            *ngIf="createSchedule.get('description').hasError('required')">El
+            motivo es <strong>Obligatorio</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit"
+        [disabled]="!createSchedule.valid">Registrar Horas</button>
+    </mat-card-content>
+  </mat-card>
+</form>
